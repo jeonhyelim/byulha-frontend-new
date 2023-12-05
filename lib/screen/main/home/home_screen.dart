@@ -34,8 +34,9 @@ class HomeScreen extends ConsumerWidget {
                 controller: _pageController,
                 itemCount: _totalAds,
                 itemBuilder: (_, index) {
+                  // 실제 배너 이미지가 있다면 Image.network 또는 Image.asset을 사용하세요.
                   return Container(
-                    color: Colors.grey, // 광고 이미지를 넣을 수 있음
+                    color: Colors.grey, // 임시 배경색
                     child: Center(
                       child: Text('배너 ${index + 1}'),
                     ),
@@ -54,7 +55,7 @@ class HomeScreen extends ConsumerWidget {
                     MaterialPageRoute(builder: (context) => ImageRecScreen()),
                   );
                 },
-                child: Text('이미지로 향수 추천받기'),
+                child: Text('카리스에게 추천받기'),
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 120, vertical: 40),
                 ),
@@ -70,11 +71,12 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           ),
+          // 향수 목록을 로드하는 SliverGrid
           perfumeList.when(
             data: (data) => SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 3 / 4,
+                childAspectRatio: 0.8,
               ),
               delegate: SliverChildBuilderDelegate(
                     (context, index) {
@@ -120,6 +122,7 @@ class HomeScreen extends ConsumerWidget {
               child: Center(child: Text('An error occurred: $e')),
             ),
           ),
+          // '더 경험하기' 버튼
           SliverToBoxAdapter(
             child: OutlinedButton(
               onPressed: () {
