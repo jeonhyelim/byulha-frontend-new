@@ -4,6 +4,7 @@ import 'package:taba/screen/main/home/home_screen.dart';
 import 'package:taba/screen/main/profile/favorite_screen.dart';
 import 'package:taba/screen/main/profile/search_screen.dart'; // 검색 화면 import
 import '../../../modules/orb/components/components.dart'; // Orb 스킨 컴포넌트
+import 'package:taba/screen/main/profile/profile_screen.dart';
 
 final pageControllerProvider = StateProvider<PageController>((ref) {
   return PageController(initialPage: 0);
@@ -28,8 +29,8 @@ class MainScreen extends ConsumerWidget {
         children: [
           HomeScreen(), // 홈 화면
           SearchScreen(), // 검색 화면
-          FavoriteScreen() // 찜 목록 화면
-
+          FavoriteScreen(), // 찜 목록 화면
+          ProfileScreen()
 
           // 다른 화면들도 여기에 추가
         ],
