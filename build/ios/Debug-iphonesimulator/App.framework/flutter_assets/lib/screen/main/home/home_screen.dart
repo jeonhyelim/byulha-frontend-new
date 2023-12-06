@@ -39,11 +39,11 @@ class HomeScreen extends ConsumerWidget {
                 fit: BoxFit.fill,
               ),
               Image.asset(
-                'assets/images/main_image2.jpg',
+                'assets/images/main_image2.JPG',
                 fit: BoxFit.fill,
               ),
               Image.asset(
-                'assets/images/main_image3.jpg',
+                'assets/images/main_image3.JPG',
                 fit: BoxFit.fill,
               ),
             ]
