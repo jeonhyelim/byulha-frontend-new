@@ -22,9 +22,11 @@ class HomeScreen extends ConsumerWidget {
     final AsyncValue<PerfumeList> perfumeList = ref.watch(perfumeListProvider);
     final ThemeData theme = Theme.of(context);
 
+
     return OrbScaffold(
       orbAppBar: OrbAppBar(
         title: "PURPLE",
+
       ),
       shrinkWrap: true,
       body: Column(
@@ -34,6 +36,14 @@ class HomeScreen extends ConsumerWidget {
             items: [
               Image.asset(
                 'assets/images/main_image1.png',
+                fit: BoxFit.fill,
+              ),
+              Image.asset(
+                'assets/images/main_image2.JPG',
+                fit: BoxFit.fill,
+              ),
+              Image.asset(
+                'assets/images/main_image3.JPG',
                 fit: BoxFit.fill,
               ),
             ]

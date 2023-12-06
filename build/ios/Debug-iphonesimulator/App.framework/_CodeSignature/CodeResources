@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		lniS1LogAq7UJco+TlzUIQgrOuE=
+		bSc+C9XhcfD5YMpPbAQT/HRFh40=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		aFKkRVCe/1t/qG9A6WanQj8H4m8=
+		o0/4gzPAn9h4w/e/14UxCr5W3hA=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -28,6 +28,14 @@
 		<data>
 		d1KdlpzvMl5znS81QQqjIJZk0fE=
 		</data>
+		<key>flutter_assets/assets/images/main_image2.JPG</key>
+		<data>
+		CN1VJxIixxaXFXIvdfOa64K2pOY=
+		</data>
+		<key>flutter_assets/assets/images/main_image3.JPG</key>
+		<data>
+		kNCYTrVx0su/mIF8fG1CshJmZaM=
+		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -38,7 +46,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		jxytIiNB/ZmbfuGPGkR+28rD58Y=
+		/SVKdMz2FUgjiSld20SUIa5vYR8=
 		</data>
 		<key>flutter_assets/lib/screen/main/home/%E1%84%81%E1%85%A9%E1%84%87%E1%85%AE%E1%84%80%E1%85%B5%E1%84%89%E1%85%A5%E1%86%AB%E1%84%80%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3.jpeg</key>
 		<data>
@@ -58,7 +66,7 @@
 		</data>
 		<key>flutter_assets/lib/screen/main/home/home_screen.dart</key>
 		<data>
-		RxfBFOocTOiS/hC2WFnTy+JgZ1k=
+		nlUtPEXa+r5/n/cSP9F3FWD6ni4=
 		</data>
 		<key>flutter_assets/lib/screen/main/home/image_recognition_screen.dart</key>
 		<data>
@@ -83,14 +91,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			J9356EgwcVUTYyUHoJ2Yy11h0zEKGWcQoeMydzElmsc=
+			Ttansc060ENU15pQT6prtVOVyYIOaA4qlJJ1zKky8Pg=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gyfk9+8YetMePnS0TFDC6pmFFxvQvvdRp+xG1RwYLPQ=
+			n3KkT8gpMSMeLajT8BNOoPsjwtTlxEWgO0zsY8WEFxk=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -114,6 +122,20 @@
 			1ZGJvvj+LNR86jQOiZkReV5AHjAmEKh8ucyOHfAtVi0=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/main_image2.JPG</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			z3myK9c6Ruz6xoCCoNdG+XVDmA01QHNfvDzZWEtWQfc=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/main_image3.JPG</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oyoJ1onxambzJrndUlY3bhNlnQMlkGrJBPWvzeGLdl8=
+			</data>
+		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -132,7 +154,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			seRClwkXCiIwbHWdroHSTjsm+Z6umB0sN3KQ8zGrkpA=
+			jzX7Y3ulMtD5kuEH2jvG8IDP1bRz8HTCG2Mf1EBoCWU=
 			</data>
 		</dict>
 		<key>flutter_assets/lib/screen/main/home/%E1%84%81%E1%85%A9%E1%84%87%E1%85%AE%E1%84%80%E1%85%B5%E1%84%89%E1%85%A5%E1%86%AB%E1%84%80%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3.jpeg</key>
@@ -167,7 +189,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rojK/4i0/52w0JAIu1uR7bXyFR8kmRIaCz/Q/ovpyzw=
+			VLzpt6cWfRH8/hUfsaqLD2ntrBYVvbk9bzPcFwAc4Fs=
 			</data>
 		</dict>
 		<key>flutter_assets/lib/screen/main/home/image_recognition_screen.dart</key>

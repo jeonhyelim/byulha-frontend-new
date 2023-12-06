@@ -40,7 +40,7 @@ class _ProfileScreen extends ConsumerState<ProfileScreen> {
             ),
             SizedBox(height: 10),
             Text(
-              'nickname',
+              'leo',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

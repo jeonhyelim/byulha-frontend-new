@@ -22,9 +22,11 @@ class HomeScreen extends ConsumerWidget {
     final AsyncValue<PerfumeList> perfumeList = ref.watch(perfumeListProvider);
     final ThemeData theme = Theme.of(context);
 
+
     return OrbScaffold(
       orbAppBar: OrbAppBar(
         title: "PURPLE",
+
       ),
       shrinkWrap: true,
       body: Column(
@@ -34,6 +36,14 @@ class HomeScreen extends ConsumerWidget {
             items: [
               Image.asset(
                 'assets/images/main_image1.png',
+                fit: BoxFit.fill,
+              ),
+              Image.asset(
+                'assets/images/main_image2.jpg',
+                fit: BoxFit.fill,
+              ),
+              Image.asset(
+                'assets/images/main_image3.jpg',
                 fit: BoxFit.fill,
               ),
             ]
@@ -174,22 +184,42 @@ class HomeScreen extends ConsumerWidget {
                         padding: const EdgeInsets.only(right: 16),
                         child: IconButton(
                           onPressed: () {
-                            ref
-                                .read(perfumeListProvider.notifier)
-                                .addFavoritePerfume(
-                                  perfumeList.value!.content[index],
-                                );
-                            SnackBar snackBar = SnackBar(
-                              content: Text(
-                                '찜 목록에 추가되었습니다.',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.white,
+                            final _perfumeList = ref.read(perfumeListProvider.notifier).favoritePerfumeList;
+                            if(_perfumeList.contains(perfumeList.value!.content[index])) {
+                              ref
+                                  .read(perfumeListProvider.notifier)
+                                  .removeFavoritePerfume(
+                                perfumeList.value!.content[index],
+                              );
+                              SnackBar snackBar = SnackBar(
+                                content: Text(
+                                  '찜 목록에서 삭제되었습니다.',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              duration: const Duration(seconds: 2),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                                duration: const Duration(seconds: 2),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            } else{
+                              ref
+                                  .read(perfumeListProvider.notifier)
+                                  .addFavoritePerfume(
+                                perfumeList.value!.content[index],
+                              );
+                              SnackBar snackBar = SnackBar(
+                                content: Text(
+                                  '찜 목록에 추가되었습니다.',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                duration: const Duration(seconds: 2),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
                           },
                           icon: Icon(Icons.favorite_border_outlined),
                         ),
