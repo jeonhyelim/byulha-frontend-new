@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:taba/domain/auth/auth_repository.dart';
 import 'package:taba/domain/auth/login/login.dart';
 import 'package:taba/main.dart';
 import 'package:taba/modules/orb/components/components.dart';
-
-import '../../repository.dart';
 
 final loginProvider =
 AsyncNotifierProvider<LoginNotifier, Login?>(() => LoginNotifier());
@@ -16,11 +15,11 @@ class LoginNotifier extends AsyncNotifier<Login?> {
   Future<void> login(
       {required String nickname, required String password}) async {
     state = await AsyncValue.guard(() async =>
-    await ref.read(repositoryProvider).login(nickname, password));
+    await ref.read(authRepositoryProvider).login(nickname, password));
   }
 
   Future<void> getSignupToken() async {
-    signupToken = await ref.read(repositoryProvider).getSignupToken();
+    signupToken = await ref.read(authRepositoryProvider).getSignupToken();
   }
 
   Future<bool> signUp({
@@ -32,7 +31,7 @@ class LoginNotifier extends AsyncNotifier<Login?> {
     required String password,
   }) async {
 
-    return await ref.read(repositoryProvider).signUp(
+    return await ref.read(authRepositoryProvider).signUp(
       signupToken: signupToken!,
       name: name,
       nickname: nickname,
@@ -44,14 +43,14 @@ class LoginNotifier extends AsyncNotifier<Login?> {
   }
 
   Future<bool> sendSMS({required String phoneNumber}) async {
-    return await ref.read(repositoryProvider).sendSMS(
+    return await ref.read(authRepositoryProvider).sendSMS(
         signupToken: signupToken!,
         phoneNumber: phoneNumber
     );
   }
 
   Future<bool> verifySMS({required String code}) async {
-    return await ref.read(repositoryProvider).verifySMS(
+    return await ref.read(authRepositoryProvider).verifySMS(
       signupToken: signupToken!,
       code: code
     );
@@ -60,7 +59,7 @@ class LoginNotifier extends AsyncNotifier<Login?> {
   Future<void> verifyNickname({required String nickname}) async {
     validNickname = "";
     final result = await AsyncValue.guard(() async =>
-    await ref.read(repositoryProvider).verifyNickname(nickname : nickname));
+    await ref.read(authRepositoryProvider).verifyNickname(nickname : nickname));
     if (!result.hasError) {
       validNickname = nickname;
     }
