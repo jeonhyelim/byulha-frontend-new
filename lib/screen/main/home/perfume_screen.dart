@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,7 +7,7 @@ import 'package:taba/screen/login/login_screen.dart';
 import '../../../modules/orb/components/components.dart';
 import 'package:taba/domain/perfume/perfume.dart';
 import 'package:taba/domain/perfume/perfume_provider.dart';
-import 'package:taba/screen/main/home/image_rec.dart';
+import 'package:taba/screen/main/home/image_recognition_screen.dart';
 import 'package:taba/screen/main/home/perfume_screen.dart';
 
 class PerfumeScreen extends ConsumerStatefulWidget {
@@ -100,12 +102,19 @@ class _PerfumeScreen extends ConsumerState<PerfumeScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     SizedBox(height: 5),
                     Text(
                       'This perfume is a blend of...',
                       textAlign: TextAlign.justify,
                     ),
+
+                    //NOTE 그래프 추가
+                    Text(data.notes[1]),
+
+                    //
                     Text('sillage: ${data.sillage}'),
+                    Text('longevity: ${data.longevity}'),
 
                     SizedBox(height: 20),
                     ElevatedButton(

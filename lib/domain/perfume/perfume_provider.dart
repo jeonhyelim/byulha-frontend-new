@@ -5,7 +5,7 @@ import 'package:taba/domain/auth/repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final perfumeListProvider =
-AsyncNotifierProvider<PerfumeListNotifier, PerfumeList>(
+    AsyncNotifierProvider<PerfumeListNotifier, PerfumeList>(
         () => PerfumeListNotifier());
 
 class PerfumeListNotifier extends AsyncNotifier<PerfumeList> {
@@ -23,7 +23,7 @@ class PerfumeListNotifier extends AsyncNotifier<PerfumeList> {
   // 페이지 번호와 한 페이지당 항목 수를 매개변수로 받는 getPerfumeList 함수
   void getPerfumeList(int page, int size) async {
     state = await AsyncValue.guard(
-            () => ref.read(repositoryProvider).getPerfumeList(page, size));
+        () => ref.read(repositoryProvider).getPerfumeList(page, size));
   }
 
   // build 메서드에서 첫 페이지의 데이터를 가져옵니다.
@@ -33,5 +33,31 @@ class PerfumeListNotifier extends AsyncNotifier<PerfumeList> {
     getPerfumeList(0, 10); // 첫 페이지 데이터 로드
     print('error: ${state.error}');
     return state.value!;
+  }
+}
+
+final perfumeDetailProvider =
+    AsyncNotifierProvider<PerfumeDetailNotifier, PerfumeDetail>(
+        () => PerfumeDetailNotifier());
+
+class PerfumeDetailNotifier extends AsyncNotifier<PerfumeDetail> {
+  Future<void> perfumeDetail({required String perfumeId}) async {
+    state = await AsyncValue.guard(() async =>
+        await ref.read(repositoryProvider).getPerfumeDetail(perfumeId));
+  }
+
+  @override
+  FutureOr<PerfumeDetail> build() async {
+    // TODO: implement build
+    // return state.value;
+    final perfumeDetail = state.value;
+    if (perfumeDetail != null) {
+      return perfumeDetail;
+    } else {
+      // 오류 처리 또는 기본 PerfumeDetail 객체 반환
+      throw Exception('PerfumeDetail is null');
+      // 또는
+      // return PerfumeDetail(/* 기본 값 */);
+    }
   }
 }

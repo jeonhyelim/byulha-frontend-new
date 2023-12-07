@@ -1,6 +1,6 @@
 //perfume.dart
 
-class Perfume{
+class Perfume {
   final int id;
   final String name;
   final String company;
@@ -17,7 +17,7 @@ class Perfume{
     required this.thumbnailUrl,
   });
 
-  factory Perfume.fromJson(Map<String,dynamic> json){
+  factory Perfume.fromJson(Map<String, dynamic> json) {
     return Perfume(
       id: json['id'],
       name: json['name'],
@@ -29,7 +29,7 @@ class Perfume{
   }
 }
 
-class PerfumeList{
+class PerfumeList {
   final List<Perfume> content;
   final bool hasNext;
   final int totalPages;
@@ -50,7 +50,7 @@ class PerfumeList{
     required this.last,
   });
 
-  factory PerfumeList.fromJson(Map<String,dynamic> json){
+  factory PerfumeList.fromJson(Map<String, dynamic> json) {
     List<Perfume> content = [];
     for (var item in json['content']) {
       content.add(Perfume.fromJson(item));
@@ -66,5 +66,47 @@ class PerfumeList{
       last: json['last'],
     );
   }
+}
 
+class PerfumeDetail {
+  // final List<Perfume> content;
+  String perfumeUrl;
+  String name;
+  String company;
+  List<String> notes;
+  String rating;
+  String forGender;
+  String longevity;
+  String sillage;
+  String priceValue;
+  String perfumeImage;
+
+  PerfumeDetail({
+    required this.perfumeUrl,
+    required this.name,
+    required this.company,
+    required this.notes,
+    required this.rating,
+    required this.forGender,
+    required this.longevity,
+    required this.sillage,
+    required this.priceValue,
+    required this.perfumeImage,
+  });
+
+  factory PerfumeDetail.fromJson(Map<String, dynamic> json) {
+    return PerfumeDetail(
+      perfumeUrl: json['perfumeUrl'],
+      name: json['name'],
+      company: json['company'],
+      // notes: json['notes'],
+      notes: List<String>.from(json['notes']),
+      rating: json['rating'],
+      forGender: json['forGender'],
+      longevity: json['longevity'],
+      sillage: json['sillage'],
+      priceValue: json['priceValue'],
+      perfumeImage: json['perfumeImage'],
+    );
+  }
 }

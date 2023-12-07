@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taba/domain/auth/login/login.dart';
+import 'package:taba/domain/perfume/perfume.dart';
 import 'package:taba/utils/dio_provider.dart';
 
-final authRepositoryProvider = Provider((ref) => AuthRepository(ref.read(dioProvider)));
+final authRepositoryProvider =
+    Provider((ref) => AuthRepository(ref.read(dioProvider)));
 
 class AuthRepository {
   final Dio dio;
@@ -15,7 +17,8 @@ class AuthRepository {
     return response.data['signupToken'];
   }
 
-  Future<bool> sendSMS({required String phoneNumber, required String signupToken}) async {
+  Future<bool> sendSMS(
+      {required String phoneNumber, required String signupToken}) async {
     final response = await dio.post(
       '/sms/$signupToken',
       data: {
@@ -25,7 +28,8 @@ class AuthRepository {
     return response.statusCode == 200;
   }
 
-  Future<bool> verifySMS({required String code, required String signupToken}) async {
+  Future<bool> verifySMS(
+      {required String code, required String signupToken}) async {
     final response = await dio.post(
       '/sms/verify/$signupToken',
       data: {
@@ -60,9 +64,9 @@ class AuthRepository {
       data: {
         'name': name,
         'nickname': nickname,
-        'age' : age,
-        'gender' : gender,
-        'phone' : phone,
+        'age': age,
+        'gender': gender,
+        'phone': phone,
         'password': password,
       },
     );
@@ -75,4 +79,14 @@ class AuthRepository {
     );
     return response.statusCode == 200;
   }
+
+  // Future<PerfumeDetail> perfumeDetail(String perfumeId) async {
+  //   final response = await dio.post(
+  //     '/perfume/$perfumeId',
+  //     data: {
+  //       'perfumeId': perfumeId,
+  //     },
+  //   );
+  //   return PerfumeDetail.fromJson(response.data);
+  // }
 }

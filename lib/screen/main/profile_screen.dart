@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:taba/domain/auth/login/login.dart';
 import 'package:taba/screen/login/login_screen.dart';
 
 import '../../../modules/orb/components/components.dart';
@@ -40,7 +41,7 @@ class _ProfileScreen extends ConsumerState<ProfileScreen> {
             ),
             SizedBox(height: 10),
             Text(
-              'leo',
+              'nickname',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
