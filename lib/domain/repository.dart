@@ -1,22 +1,40 @@
+// repository.dart
+import 'package:taba/domain/perfume/perfume.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taba/domain/auth/login/login.dart';
-import 'package:taba/utils/dio_provider.dart';
 
-final authRepositoryProvider = Provider((ref) => AuthRepository(ref.read(dioProvider)));
+import 'auth/login/login.dart';
 
-class AuthRepository {
-  final Dio dio;
+final repositoryProvider = Provider<Repository>((ref) => Repository());
+/*
+class Repository {
+  final Dio _dio = Dio();
 
-  AuthRepository(this.dio);
+  Future<PerfumeList> getPerfumeList() async {
+    final response = await _dio.get(
+      'https://byulha.life/api/perfume?page=0&size=20',
+      options: Options(
+        headers: {'Content-Type': 'application/json'},
+      ),
+    );
+    await Future.delayed(Duration(seconds: 2));
+    return PerfumeList.fromJson(response.data);
+  }
+}
+
+ */
+
+
+class Repository {
+  final Dio _dio = Dio();
 
   Future<String> getSignupToken() async {
-    final response = await dio.get('/user/signup-token');
+    final response = await _dio.get('/user/signup-token');
     return response.data['signupToken'];
   }
 
   Future<bool> sendSMS({required String phoneNumber, required String signupToken}) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       '/sms/$signupToken',
       data: {
         'phoneNumber': phoneNumber,
@@ -26,7 +44,7 @@ class AuthRepository {
   }
 
   Future<bool> verifySMS({required String code, required String signupToken}) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       '/sms/verify/$signupToken',
       data: {
         'code': code,
@@ -36,7 +54,7 @@ class AuthRepository {
   }
 
   Future<Login> login(String nickname, String password) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       '/user/login',
       data: {
         'nickname': nickname,
@@ -55,7 +73,7 @@ class AuthRepository {
     required String phone,
     required String password,
   }) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       '/user/$signupToken',
       data: {
         'name': name,
@@ -70,9 +88,23 @@ class AuthRepository {
   }
 
   Future<bool> verifyNickname({required String nickname}) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       '/user/signup/verify/$nickname',
     );
     return response.statusCode == 200;
+  }
+
+  Future<PerfumeList> getPerfumeList(int page, int size) async {
+    final response = await _dio.get(
+      'https://byulha.life/api/perfume?page=$page&size=$size&sort=rating,desc',
+      options: Options(
+        headers: {'Content-Type': 'application/json'},
+      ),
+    );
+    if (response.statusCode == 200) {
+      return PerfumeList.fromJson(response.data);
+    } else {
+      throw Exception('Failed to load perfumes');
+    }
   }
 }
